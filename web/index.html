@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoDry System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>EcoDry System</h1>
+            <p>Real-Time Automatic Rain Protection Cover</p>
+        </header>
+
+        <div class="top-cards">
+            <div class="card">
+                <div class="card-icon">🌧️</div>
+                <div class="card-title">RAIN STATUS</div>
+                <div class="card-value" id="rainStatusValue">--</div>
+                <div class="card-sub" id="rainStatusSub">Waiting...</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <div class="card-title">COVER STATUS</div>
+                <div class="card-value" id="coverStatusValue">--</div>
+                <div class="card-sub" id="coverStatusSub">Waiting...</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <div class="card-title">SENSOR VALUE</div>
+                <div class="card-value" id="sensorValueValue">--</div>
+                <div class="card-sub">Analog Reading (0-4095)</div>
+            </div>
+        </div>
+
+        <div class="card chart-card">
+            <div class="card-header">
+                📈 SENSOR TREND (Last 24 Hours)
+            </div>
+            <div class="chart-container">
+                <canvas id="sensorChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                🔧 SYSTEM HEALTH MONITOR
+            </div>
+            <div class="health-grid">
+                <div class="health-item">
+                    <span>💧 Water Sensor:</span>
+                    <strong id="healthWater">--</strong>
+                </div>
+                <div class="health-item">
+                    <span>⚙️ Servo Motor:</span>
+                    <strong id="healthServo">--</strong>
+                </div>
+                <div class="health-item">
+                    <span>📱 GSM Module:</span>
+                    <strong id="healthGSM">--</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                📥 EXPORT DATABASE
+            </div>
+            <div class="export-buttons">
+                <button class="btn btn-green" id="btnExportSensorCSV">
+                    📊 Download Sensor Data (CSV)
+                </button>
+                <button class="btn btn-blue" id="btnExportDBJSON">
+                    📦 Download Full Database (JSON)
+                </button>
+                <button class="btn btn-purple" id="btnExportDBCSV">
+                    📑 Download Full Database (CSV)
+                </button>
+            </div>
+            <p class="export-note">💡 Export all sensor readings and system health data</p>
+        </div>
+
+        <footer>
+            <div id="lastUpdated">Last Updated: --:--:--</div>
+            <label class="auto-refresh-label">
+                <input type="checkbox" id="autoRefresh" checked> Auto-refreshes every 5 seconds
+            </label>
+        </footer>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    /* Rich, modern IoT tech background */
+    background-color: #0f172a; /* deep slate/navy */
+    min-height: 100vh;
+    color: #1f2937;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Create glowing orbs for the glass effect to shine */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    animation: float 10s ease-in-out infinite alternate;
+}
+
+body::before {
+    width: 500px;
+    height: 500px;
+    background: rgba(16, 185, 129, 0.25); /* Eco Green blob */
+    top: -150px;
+    left: -150px;
+}
+
+body::after {
+    width: 600px;
+    height: 600px;
+    background: rgba(59, 130, 246, 0.25); /* Rain Blue blob */
+    bottom: -200px;
+    right: -200px;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(40px, 60px); }
+}
+
+.container {
+    width: 100%;
+    max-width: 950px;
+    padding: 40px 20px;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+header h1 {
+    margin: 0 0 8px 0;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+header p {
+    margin: 0;
+    font-size: 15px;
+    opacity: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Glassmorphism Cards - Instantly levels up the design */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin-bottom: 24px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.top-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.top-cards .card {
+    margin-bottom: 0;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Upgraded icon containers to look like actual UI elements */
+.card-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+    border-radius: 50%;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #4b5563;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.card-value {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #111827;
+}
+
+.card-sub {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.card-header {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.chart-card {
+    padding: 24px;
+}
+
+.chart-container {
+    height: 320px;
+    width: 100%;
+}
+
+.health-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.health-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: #475569;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.health-item:hover {
+    background: #f1f5f9;
+}
+
+.health-item strong {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.export-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+/* Premium Buttons with Gradients and hover states */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    filter: brightness(110%);
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-green { background: linear-gradient(135deg, #10b981, #059669); }
+.btn-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.btn-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+
+.export-note {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+    font-style: italic;
+}
+
+footer {
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    font-size: 13px;
+    margin-top: 30px;
+    padding-bottom: 40px;
+}
+
+footer .auto-refresh-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+footer input[type="checkbox"] {
+    accent-color: #8b5cf6;
+    width: 16px;
+    height: 16px;
+}
+
+@media (max-width: 768px) {
+    .top-cards {
+        grid-template-columns: 1fr;
+    }
+    .health-grid {
+        grid-template-columns: 1fr;
+    }
+    .export-buttons {
+        flex-direction: column;
+    }
+}
