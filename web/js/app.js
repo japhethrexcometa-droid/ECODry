@@ -21,7 +21,6 @@
         autoRefresh: document.getElementById('autoRefresh'),
         
         btnExportSensorCSV: document.getElementById('btnExportSensorCSV'),
-        btnExportDBJSON: document.getElementById('btnExportDBJSON'),
         btnExportDBCSV: document.getElementById('btnExportDBCSV')
     };
 
@@ -151,18 +150,6 @@
         downloadFile(csv, 'sensor_data.csv', 'text/csv');
     }
 
-    async function exportDBJSON() {
-        const { data: sensorData } = await supabase.from('sensor_data').select('*').order('created_at', { ascending: true });
-        const { data: healthData } = await supabase.from('system_health').select('*');
-        
-        const fullDB = {
-            sensor_data: sensorData || [],
-            system_health: healthData || []
-        };
-        
-        downloadFile(JSON.stringify(fullDB, null, 2), 'full_database.json', 'application/json');
-    }
-
     async function exportDBCSV() {
         const { data: sensorData } = await supabase.from('sensor_data').select('*').order('created_at', { ascending: true });
         const { data: healthData } = await supabase.from('system_health').select('*').limit(1).single();
@@ -186,7 +173,6 @@
     function init() {
         // Bind Export Buttons
         DOM.btnExportSensorCSV.addEventListener('click', exportSensorCSV);
-        DOM.btnExportDBJSON.addEventListener('click', exportDBJSON);
         DOM.btnExportDBCSV.addEventListener('click', exportDBCSV);
 
         initChart();
