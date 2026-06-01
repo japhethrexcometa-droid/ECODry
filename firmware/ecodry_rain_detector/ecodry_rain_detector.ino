@@ -271,7 +271,7 @@ void sendSensorData(String rainStatus, String coverStatus, int sensorValue) {
 // ==============================================
 // FUNCTION: Send system health to Supabase
 // ==============================================
-void sendSystemHealth(String waterSensor, String servo, String sdCard, int sdSpace, String gsm) {
+void sendSystemHealth(String waterSensor, String servo, String gsm) {
     if (WiFi.status() == WL_CONNECTED) {
         HTTPClient http;
         String url = String(supabaseUrl) + "/system_health?id=eq.1";
@@ -280,9 +280,8 @@ void sendSystemHealth(String waterSensor, String servo, String sdCard, int sdSpa
         http.addHeader("Content-Type", "application/json");
         http.addHeader("apikey", supabaseKey);
         http.addHeader("Authorization", String("Bearer ") + supabaseKey);
-        // Supabase REST PATCH request to update existing row
         
-        String payload = "{\"water_sensor\":\"" + waterSensor + "\",\"servo\":\"" + servo + "\",\"sd_card\":\"" + sdCard + "\",\"sd_space\":" + String(sdSpace) + ",\"gsm\":\"" + gsm + "\"}";
+        String payload = "{\"water_sensor\":\"" + waterSensor + "\",\"servo\":\"" + servo + "\",\"gsm\":\"" + gsm + "\"}";
         
         int httpCode = http.PATCH(payload);
         http.end();
@@ -374,7 +373,7 @@ void setup() {
     Serial.println("   - Rain detected → Cover CLOSES → SMS sent");
     Serial.println("   - No rain → Cover OPENS → SMS sent\n");
     
-    sendSystemHealth("WORKING", "WORKING", "WORKING", 512, "WORKING");
+    sendSystemHealth("WORKING", "WORKING", "WORKING");
 }
 
 // ==============================================

@@ -168,9 +168,9 @@
         const { data: healthData } = await supabase.from('system_health').select('*').limit(1).single();
         
         let csv = "--- SYSTEM HEALTH ---\n";
-        csv += "Water Sensor,Servo,SD Card,SD Space,GSM,Updated_At\n";
+        csv += "Water Sensor,Servo,GSM,Updated_At\n";
         if (healthData) {
-            csv += `${healthData.water_sensor},${healthData.servo},${healthData.sd_card},${healthData.sd_space},${healthData.gsm},${healthData.updated_at}\n`;
+            csv += `${healthData.water_sensor},${healthData.servo},${healthData.gsm},${healthData.updated_at}\n`;
         }
         
         csv += "\n--- SENSOR DATA ---\n";
